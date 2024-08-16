@@ -1,5 +1,10 @@
-# Step 1: Create your Project folder
-Create your Project folder on your Windows PC with the following structure:
+# Odoo Docker Setup with Custom and Enterprise Addons
+
+## Overview
+This guide provides step-by-step instructions for setting up an Odoo instance with Docker, including custom and enterprise addons.
+
+## Project Structure
+Create your project folder on your Windows PC with the following structure:
 ```
 project-root/
 │
@@ -10,26 +15,40 @@ project-root/
 ├── enterprise-addons/ # Directory for Odoo Enterprise addons
 ```
 
-# Step 2: Open Command Prompt or PowerShell
-You can use either Command Prompt or PowerShell to execute the Git commands. Press Win + R, type cmd or powershell, and press Enter. Then Navigate to the Desired Directory where you want to clone the Odoo Enterprise repository
-```
-cd C:\project-root\enterprise-addons
+
+## Steps to Setup
+### Step 1: Create Project Folder
+
+1. Create a folder named `project-root` on your Windows PC.
+2. Inside `project-root`, create the following subdirectories and files:
+   - `docker-compose.yml`
+   - `odoo.conf`
+   - `addons/` (for custom addons)
+   - `enterprise-addons/` (for enterprise addons)
+
+### Step 2: Open Command Prompt or PowerShell
+
+1. Press `Win + R`, type `cmd` or `powershell`, and press Enter.
+2. Navigate to the `project-root` directory:
+
+```shell
+   cd C:\project-root
 ```
 
+### Step 3: Clone Odoo Enterprise Git Repository
+1. Ensure you have Git installed and configured on your Windows machine.
+2. Clone the Odoo Enterprise repository into the `enterprise-addons` directory:
+```shell
+   git clone git@github.com:odoo/enterprise.git enterprise-addons
+```
 
-# Step 4: Clone Odoo Enterprise Git Repository
-Use the git clone command to clone the repository into a subdirectory named enterprise-addons. Ensure you have Git installed and configured on your Windows machine.
-```
-git clone git@github.com:odoo/enterprise.git enterprise-addons
-```
 > [!TIP]
-> Add your custom addones in the `addons` Directory which located inside the `project-root/` if required
+> Place your custom addons in the `addons/` directory inside the `project-root/`.
 
 
-# Step 5: Prepare `docker-compose.yml` file
-Create `docker-compose.yml` File which located inside the `project-root/` file with the following content:
-
-```
+### Step 4: Create `docker-compose.yml`
+Create a `docker-compose.yml` file inside the `project-root/` directory with the following content:
+```yaml
 version: '3.8'
 
 services:
@@ -64,9 +83,10 @@ volumes:
   odoo-db:
 ```
 
-# Step 6: Create/Update Configuration File (`odoo.conf`)
-Make sure your `odoo.conf` includes the necessary configurations for addons:
-```
+
+### Step 5: Create/Update Configuration File (`odoo.conf`)
+Ensure your `odoo.conf` file includes the necessary configurations for addons:
+```ini
 [options]
 ; This is the Odoo configuration file
 
@@ -84,27 +104,38 @@ logfile = /var/log/odoo/odoo.log
 
 # Other settings
 admin_passwd = admin
-
 ```
 
-# Step 7: Start Docker Compose
+### Step 6: Start Docker Compose
 Run the following command in the directory where your `docker-compose.yml` file is located:
-```
+```shell
 docker-compose up -d
 ```
 
-# Step 7: Verify the Setup
-## 7.1: Check Running Containers
-```
-docker ps
+### Step 7: Verify the Setup
+7.1. Check Running Containers
+```shell
+docker-compose up -d
 ```
 
-## 7.2: Access Odoo
+7.2. Access Odoo
 Open a web browser and navigate to `http://localhost:8069`.
 
-## 7.3: Check Logs for Errors
-```
+7.3. Check Logs for Errors
+```shell
 docker logs <odoo_container_id>
 ```
+Replace `<odoo_container_id>` with the ID of your Odoo container, which you can find using the docker ps command.
+
+## Required Software
+
+To set up and run Odoo with Docker and custom addons on your Windows PC, you need the following software:
+
+### 1. [Docker Desktop](https://www.docker.com/products/docker-desktop)
+### 2. [Git](https://git-scm.com/)
+### 3. [Text Editor or IDE](https://code.visualstudio.com/)
+### 4. [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows)
+### Optional: [Windows Terminal](https://aka.ms/terminal)
+
 
 
