@@ -138,4 +138,10 @@ To set up and run Odoo with Docker and custom addons on your Windows PC, you nee
 ### Optional: [Windows Terminal](https://aka.ms/terminal)
 
 
+## Contact
+If you have any questions or need further assistance, please feel free to contact me:
 
+- **Email:** [t.ahmed@stride.ae](mailto:t.ahmed@stride.ae)
+- **GitHub:** [StrideIT](https://github.com/StrideIT)
+
+Thank you for checking out this guide!
